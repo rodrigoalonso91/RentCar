@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text.Json;
 
 namespace RentCar
 {
+
     class Program
     {
+
         static void Main(string[] args)
         {
             // Creating Cars
@@ -30,13 +31,29 @@ namespace RentCar
             };
 
             // Tests
-            CarCRUD.Create(car1);
-            var recoveredCar = CarCRUD.Get("hwi464");
+            var carCRUD = CreateCrud((int)DataStorage.Json);
+
+            carCRUD.Create(car1);
+            var recoveredCar = carCRUD.Get("hwi464");
             Console.WriteLine(recoveredCar.Brand);
-            CarCRUD.Create(car2);
-            CarCRUD.Delete("jYz   487     ");
+            carCRUD.Create(car2);
+            carCRUD.Delete("jYz   487     ");
             car1.Color = "Rosita";
-            CarCRUD.Update(car1);
-        } 
+            carCRUD.Update(car1);
+        }
+
+        public static CarCRUDInFileSystem CreateCrud(int id)
+        {
+            // Idea para cuando se implemente otro sistema de almacenamiento de datos.
+            if (id == 0)
+            {
+                return new CarCRUDInFileSystem();
+            }
+            else
+            {
+                // Some code
+                return null;
+            }
+        }
     }
 }
