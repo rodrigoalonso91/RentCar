@@ -31,6 +31,8 @@ namespace RentCar
 
             // Tests
             CarCRUD.Create(car1);
+            var recoveredCar = CarCRUD.Get("hwi464");
+            Console.WriteLine(recoveredCar.Brand);
             CarCRUD.Create(car2);
             CarCRUD.Delete("jYz   487     ");
             car1.Color = "Rosita";
