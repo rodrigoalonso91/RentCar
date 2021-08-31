@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
 
 namespace RentCar
 {
-
     class Program
     {
-
         static void Main(string[] args)
         {
             // Creating Cars
