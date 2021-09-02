@@ -1,6 +1,6 @@
 ﻿namespace RentCar
 {
-    interface ICarCRUD
+    public interface ICarCRUD
     {
         Car Create(Car car);
         Car Get(string LicensePlate);

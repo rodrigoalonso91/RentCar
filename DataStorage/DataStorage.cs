@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RentCar
 {
-    enum DataStorage
+    public enum DataStorage
     {
        Json = 0,
        Database = 1

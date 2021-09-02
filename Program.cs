@@ -17,7 +17,7 @@ namespace RentCar
                 Brand = BrandName.Chevrolet.ToString(),
                 Model = "Corsa",
                 Doors = 3,
-                Gearbox = GearboxType.manual.ToString(),
+                Gearbox = GearboxType.Manual.ToString(),
                 Color = "Verde"
             };
             var car2 = new Car()
@@ -26,7 +26,7 @@ namespace RentCar
                 Brand = BrandName.Peugeot.ToString(),
                 Model = "Partner",
                 Doors = 4,
-                Gearbox = GearboxType.manual.ToString(),
+                Gearbox = GearboxType.Manual.ToString(),
                 Color = "Blanco"
             };
 
@@ -47,7 +47,9 @@ namespace RentCar
             // Idea para cuando se implemente otro sistema de almacenamiento de datos.
             if (id == 0)
             {
-                return new CarCRUDInFileSystem();
+                Console.WriteLine("Ingrese el directorio donde desea guardar el archivo: \n");
+                var path = Console.ReadLine() + @"\Cars.json";
+                return new CarCRUDInFileSystem(path);
             }
             else
             {
