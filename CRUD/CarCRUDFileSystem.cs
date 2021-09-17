@@ -10,8 +10,7 @@ namespace RentCar
 {
     public class CarCRUDInFileSystem : ICarCRUD
     {
-        //FIXME:
-        //private static string _path = @"D:\Downloads\Cars.json";
+        
         private string Path { get; set; }
 
         public CarCRUDInFileSystem(string path)
@@ -42,13 +41,12 @@ namespace RentCar
 
         public Car Get(string LicensePlate)
         {
-            var carsInJson = new Dictionary<string, Car>();
 
             if (File.Exists(Path))
             {
                 var id = LicensePlate.ToUpper().Trim().Replace(" ", String.Empty);
                 var jsonFile = File.ReadAllText(Path);
-                carsInJson = JsonSerializer.Deserialize<Dictionary<string, Car>>(jsonFile);
+                var carsInJson = JsonSerializer.Deserialize<Dictionary<string, Car>>(jsonFile);
 
                 if (carsInJson.ContainsKey(id)) return carsInJson[id];
                 else Console.WriteLine("No existe el auto con patente {0}", id);
@@ -59,11 +57,10 @@ namespace RentCar
 
         public Car Update(Car car)
         {
-            var carsInJson = new Dictionary<string, Car>();
             if (File.Exists(Path))
             {
                 var jsonFile = File.ReadAllText(Path);
-                carsInJson = JsonSerializer.Deserialize<Dictionary<string, Car>>(jsonFile);
+                var carsInJson = JsonSerializer.Deserialize<Dictionary<string, Car>>(jsonFile);
                 carsInJson[car.LicensePlate] = car;
                 var opcions = new JsonSerializerOptions { WriteIndented = true };
                 var json = JsonSerializer.Serialize(carsInJson, opcions);
@@ -76,12 +73,11 @@ namespace RentCar
 
         public void Delete(string LicensePlate)
         {
-            var carsInJson = new Dictionary<string, Car>();
             if (File.Exists(Path))
             {
                 var id = LicensePlate.ToUpper().Trim().Replace(" ", String.Empty);
                 var jsonFile = File.ReadAllText(Path);
-                carsInJson = JsonSerializer.Deserialize<Dictionary<string, Car>>(jsonFile);
+                var carsInJson = JsonSerializer.Deserialize<Dictionary<string, Car>>(jsonFile);
                 carsInJson.Remove(id);
                 var opcions = new JsonSerializerOptions { WriteIndented = true };
                 var json = JsonSerializer.Serialize(carsInJson, opcions);

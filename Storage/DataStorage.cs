@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RentCar
+namespace RentCar.Storage
 {
     public enum DataStorage
     {
