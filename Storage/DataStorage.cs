@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RentCar
+namespace RentCar.Storage
 {
-    enum GearboxType
+    public enum DataStorage
     {
-        manual = 0,
-        auto = 1
+       Json = 0,
+       Database = 1
     }
 }
